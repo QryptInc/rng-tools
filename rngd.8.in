@@ -141,11 +141,11 @@ Print program version
 ENTROPY SOURCES
 .P
 Rngd is made up of multiple entropy sources, the data from which is
-aggregated and fed into the kernels entropy pool.  Note that not all entropy
+aggregated and fed into the kernel's entropy pool.  Note that not all entropy
 sources are available on all systems, and if an entropy source is enabled for a
 system on which it is not appropriate (or possible) to use, it may fail
 initialization.  It is not fatal to rngd for any single entropy source to fail
-during startup.  Only a single entropy sources is needed for rngd to operate.
+during startup.  Only a single entropy source is needed for rngd to operate.
 The following entropy sources are currently defined in rngd
 
 .TP
@@ -271,6 +271,25 @@ device to use
 \fBsample_min - \fR The minimum sample rate of the radio
 
 \fBsample_max - \fR The maximum sample rate of the radio
+
+.TP
+.B
+Radiacode (radiacode) 
+Entropy gathered from Radiacode radiation detector measuring background 
+radiation. Uses quantum randomness from radioactive decay events combined
+with energy spectrum data and timing measurements for cryptographically
+secure random number generation.
+.TP
+Options
+\fBdevice_id - \fR When multiple devices are available, the integer index of the
+device to use (default: 0)
+
+\fBserial - \fR Select device by USB serial number instead of index. Overrides
+device_id when specified.
+
+\fBpoll_delay - \fR Polling delay in milliseconds between reads (default: 100)
+
+\fBuse_spectrum - \fR Enable spectrum entropy enhancement (default: 1)
 
 .TP
 .B
